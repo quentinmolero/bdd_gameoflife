@@ -35,7 +35,7 @@ public class CellSteps {
                         && !(i == x && j == y)
                         && ((x + i) >= 0 && (x + i) < grid.size())
                         && ((y + j) >= 0 && (y + j) < grid.get(x + i).size())
-                        && !grid.get(i).get(j)) {
+                        && !grid.get(x + i).get(y + j)) {
                     grid.get(x + i).set(y + j, true);
                     assignedNeighbours++;
                 }
@@ -57,5 +57,10 @@ public class CellSteps {
     @Then("the cell at position {int},{int} should survive")
     public void theCellShouldSurvive(int x, int y) {
         Assertions.assertThat(grid.get(x).get(y)).isTrue();
+    }
+
+    @Then("the cell at position {int},{int} should die")
+    public void theCellShouldDie(int x, int y) {
+        Assertions.assertThat(grid.get(x).get(y)).isFalse();
     }
 }
