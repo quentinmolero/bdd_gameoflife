@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Map;
 
 public class BoardHandler {
 
@@ -8,12 +9,12 @@ public class BoardHandler {
         this.board = board;
     }
 
-    public static BoardHandler of(List<List<Boolean>> grid) {
-        return new BoardHandler(new Board(grid));
+    public static BoardHandler of(List<List<Cell>> grid) {
+        return new BoardHandler(new Board(grid, Map.of(CellStatus.ALIVE, "■", CellStatus.DEATH, ".")));
     }
 
     public void nextPeriod() {
         this.board.print();
-        this.board = new Board(this.board.live());
+        this.board = new Board(this.board.live(), Map.of(CellStatus.ALIVE, "■", CellStatus.DEATH, "."));
     }
 }
