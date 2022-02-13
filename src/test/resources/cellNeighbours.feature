@@ -1,169 +1,59 @@
-Feature: Two living cells are neighbours
+Feature: Searching neighbours for a center cell
 
-  Scenario: A living cell is in range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 0,0
+  Scenario Outline: Cells neighbour in a grid 3, 3 for the centers cell
+    Given a grid of a horizontal and vertical length of 3
+    And a cell has been living at the position 1, 1
+    And a cell has been living at the position <Cell2 position row>,<Cell2 position column>
     When we search for neighbours
-    Then the cells should be considered neighbours
+    Then the cells should be considered as neighbour
+    Examples:
+      | Cell2 position row | Cell2 position column |
+      | 0                  | 0                     |
+      | 0                  | 1                     |
+      | 0                  | 2                     |
+      | 1                  | 0                     |
+      | 1                  | 2                     |
+      | 2                  | 0                     |
+      | 2                  | 1                     |
+      | 2                  | 2                     |
 
-  Scenario: A living cell is in range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 0,1
+  Scenario Outline: Cells neighbour in a grid 4, 4 for the centers cells
+    Given a grid of a horizontal and vertical length of 4
+    And a cell has been living at the position <Cell1 position row>,<Cell1 position column>
+    And a cell has been living at the position <Cell2 position row>,<Cell2 position column>
     When we search for neighbours
-    Then the cells should be considered neighbours
-
-  Scenario: A living cell is in range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 0,2
-    When we search for neighbours
-    Then the cells should be considered neighbours
-
-  Scenario: A living cell is in range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 1,0
-    When we search for neighbours
-    Then the cells should be considered neighbours
-
-  Scenario: A living cell is in range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 1,2
-    When we search for neighbours
-    Then the cells should be considered neighbours
-
-  Scenario: A living cell is in range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 2,0
-    When we search for neighbours
-    Then the cells should be considered neighbours
-
-  Scenario: A living cell is in range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 2,1
-    When we search for neighbours
-    Then the cells should be considered neighbours
-
-  Scenario: A living cell is in range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 2,2
-    When we search for neighbours
-    Then the cells should be considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 3,0
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 3,1
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 3,2
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 3,3
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 3,4
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 4,0
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 4,1
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 4,2
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 4,3
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 4,4
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 0,3
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 1,3
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 2,3
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 0,4
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 1,4
-    When we search for neighbours
-    Then the cells should be not considered neighbours
-
-  Scenario: A living cell is out of range to touch another cell
-    Given a grid of a horizontal and vertical length of 5
-    And a cell has been living at the position 1,1
-    And a cell has been living at the position 2,4
-    When we search for neighbours
-    Then the cells should be not considered neighbours
+    Then the cells should be considered as neighbour
+    Examples:
+      | Cell1 position row | Cell1 position column  | Cell2 position row | Cell2 position column |
+      | 1                  | 1                      | 0                  | 0                     |
+      | 1                  | 1                      | 0                  | 1                     |
+      | 1                  | 1                      | 0                  | 2                     |
+      | 1                  | 1                      | 1                  | 0                     |
+      | 1                  | 1                      | 1                  | 2                     |
+      | 1                  | 1                      | 2                  | 0                     |
+      | 1                  | 1                      | 2                  | 1                     |
+      | 1                  | 1                      | 2                  | 2                     |
+      | 1                  | 2                      | 0                  | 1                     |
+      | 1                  | 2                      | 0                  | 2                     |
+      | 1                  | 2                      | 0                  | 3                     |
+      | 1                  | 2                      | 1                  | 1                     |
+      | 1                  | 2                      | 1                  | 3                     |
+      | 1                  | 2                      | 2                  | 1                     |
+      | 1                  | 2                      | 2                  | 2                     |
+      | 1                  | 2                      | 2                  | 3                     |
+      | 2                  | 1                      | 1                  | 0                     |
+      | 2                  | 1                      | 1                  | 1                     |
+      | 2                  | 1                      | 1                  | 2                     |
+      | 2                  | 1                      | 2                  | 0                     |
+      | 2                  | 1                      | 2                  | 2                     |
+      | 2                  | 1                      | 3                  | 0                     |
+      | 2                  | 1                      | 3                  | 1                     |
+      | 2                  | 1                      | 3                  | 2                     |
+      | 2                  | 2                      | 1                  | 1                     |
+      | 2                  | 2                      | 1                  | 2                     |
+      | 2                  | 2                      | 1                  | 3                     |
+      | 2                  | 2                      | 2                  | 1                     |
+      | 2                  | 2                      | 3                  | 1                     |
+      | 2                  | 2                      | 3                  | 1                     |
+      | 2                  | 2                      | 3                  | 2                     |
+      | 2                  | 2                      | 3                  | 3                     |
