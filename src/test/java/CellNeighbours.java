@@ -30,8 +30,6 @@ public class CellNeighbours {
     @And("a cell has been living at the coordinate {int},{int}")
     public void aCellHasBeenLivingAtTheCoordinateCellPositionRowCellPositionColumn(int y, int x) {
         grid.get(y).set(x, new Cell(CellStatus.ALIVE));
-        System.out.println("avant le grid");
-        System.out.println(grid);
     }
 
     @When("we search for neighbours of the cell at coordinate {int},{int}")

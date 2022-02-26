@@ -18,16 +18,6 @@ public class CellSteps {
     );
     Board board;
 
-    @Given("a cell has been dead at the position {int},{int}")
-    public void aCellHasBeenDeadAtThePosition(int x, int y) {
-        grid.get(x).set(y, new Cell(CellStatus.DEATH));
-    }
-
-
-    @Given("a cell has been living at the position {int},{int}")
-    public void aCellHasBeenLivingAtThePosition(int x, int y) {
-        grid.get(x).set(y, new Cell(CellStatus.ALIVE));
-    }
 
     @Given("a cell has been living")
     public void aCellHasBeenLiving() {
@@ -39,30 +29,6 @@ public class CellSteps {
         grid.get(1).set(1, new Cell(CellStatus.DEATH));
     }
 
-    @And("the cell at position {int},{int} had {int} living neighbours")
-    public void theCellHadLivingNeighbours(int x, int y, int neighbours) {
-        int assignedNeighbours = 0;
-
-        for (int i = -1; i <= 1; i++) {
-            for (int j = -1; j <= 1; j++) {
-                if (assignedNeighbours < neighbours
-                        && !(i == x && j == y)
-                        && ((x + i) >= 0 && (x + i) < grid.size())
-                        && ((y + j) >= 0 && (y + j) < grid.get(x + i).size())
-                        && !grid.get(x + i).get(y + j).getCellStatus().equals(CellStatus.ALIVE)) {
-                    grid.get(x + i).set(y + j, new Cell(CellStatus.ALIVE));
-                    assignedNeighbours++;
-                }
-            }
-        }
-    }
-
-
-
-    @And("a cell at the position {int}, {int}")
-    public void aCellAtThePosition(int arg0, int arg1) {
-        new Coordinate(arg0, arg1);
-    }
 
     @And("the cell had {int} living neighbours")
     public void theCellHadCellPositionRowLivingNeighbours(int neighbours) {
@@ -99,21 +65,6 @@ public class CellSteps {
 
     @Then("the cell should survive")
     public void theCellShouldSurvive() {
-    }
-
-    @Then("the cell at position {int},{int} should come to life")
-    public void theCellShouldComeToLife(int x, int y) {
-        Assertions.assertThat(grid.get(x).get(y).getCellStatus().equals(CellStatus.ALIVE)).isTrue();
-    }
-
-    @Then("the cell at position {int},{int} should survive")
-    public void theCellShouldSurvive(int x, int y) {
-        Assertions.assertThat(grid.get(x).get(y).getCellStatus().equals(CellStatus.ALIVE)).isTrue();
-    }
-
-    @Then("the cell at position {int},{int} should die")
-    public void theCellShouldDie(int x, int y) {
-        Assertions.assertThat(grid.get(x).get(y).getCellStatus().equals(CellStatus.DEATH)).isTrue();
     }
 
     @Then("the cell should come to life")
