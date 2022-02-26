@@ -1,13 +1,11 @@
 Feature: A cell survive
 
-  Scenario: A cell with two neighbours
-    Given a cell has been living at the position 0,0
-    And the cell at position 0,0 had 2 living neighbours
+  Scenario Outline: A cell survive
+    Given a cell has been living
+    And the cell had <Number> living neighbours
     When the next generation is computed
-    Then the cell at position 0,0 should survive
-
-  Scenario: A cell with three neighbours
-    Given a cell has been living at the position 0,0
-    And the cell at position 0,0 had 3 living neighbours
-    When the next generation is computed
-    Then the cell at position 0,0 should survive
+    Then the cell should survive
+    Examples:
+      | Number |
+      | 2      |
+      | 3      |
