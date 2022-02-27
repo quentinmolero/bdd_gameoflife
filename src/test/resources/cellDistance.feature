@@ -3,7 +3,7 @@ Feature: Check neighbour distance
   Scenario Outline: A cell is up to 1 distance of another cell
     Given a grid of a horizontal and vertical length of 5
     And a cell is in coordinate 2,2
-    When we check if the cell at coordinate <Cell position y>,<Cell position x> is beside the previous cell
+    When we check if the cell at coordinate <Cell position y>,<Cell position x> is beside the cell at coordinate 2,2
     Then the cells should be beside each other
     Examples:
       | Cell position y | Cell position x |
@@ -19,7 +19,7 @@ Feature: Check neighbour distance
   Scenario Outline: A cell is more than 1 distance of another cell
     Given a grid of a horizontal and vertical length of 5
     And a cell is in coordinate 2,2
-    When we check if the cell at coordinate <Cell position y>,<Cell position x> is beside the previous cell
+    When we check if the cell at coordinate <Cell position y>,<Cell position x> is beside the cell at coordinate 2,2
     Then the cells shouldn't be beside each other
     Examples:
       | Cell position y | Cell position x |

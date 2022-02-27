@@ -38,10 +38,18 @@ public class CellNeighbours {
         grid.get(y).set(x, new Cell(CellStatus.ALIVE));
     }
 
-    @When("we check if the cell at coordinate {int},{int} is beside the previous cell")
-    public void weCheckIfCellsAreBesides(int x, int y) {
-        Coordinate c1 = new Coordinate(2, 2);
-        isBeside = c1.isBeside(new Coordinate(y, x));
+    @And("the coordinate {int},{int} is beside than coordinate {int},{int}")
+    public void theCoordinateCellPositionYCellPositionXIsBesideThanCoordinate(int y1, int x1, int y2, int x2) {
+        Coordinate c1 = new Coordinate(y1, x1);
+        Coordinate c2 = new Coordinate(y2, x2);
+        Assertions.assertThat(c1.isBeside(c2)).isTrue();
+    }
+
+    @When("we check if the cell at coordinate {int},{int} is beside the cell at coordinate {int},{int}")
+    public void weCheckIfCellsAreBesides(int y1, int x1, int y2, int x2) {
+        Coordinate c1 = new Coordinate(y1, x1);
+        Coordinate c2 = new Coordinate(y2, x2);
+        isBeside = c1.isBeside(c2);
     }
 
     @When("we search for neighbours of the cell at coordinate {int},{int}")
