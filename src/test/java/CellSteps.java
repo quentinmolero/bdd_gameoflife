@@ -18,7 +18,6 @@ public class CellSteps {
     );
     Board board;
 
-
     @Given("a cell has been living")
     public void aCellHasBeenLiving() {
         grid.get(1).set(1, new Cell(CellStatus.ALIVE));
@@ -39,10 +38,11 @@ public class CellSteps {
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 if (assignedNeighbours < neighbours
-                        && !(i == cellLivingX && j == cellLivingY)
-                        && ((cellLivingX + i) >= 0 && (cellLivingX + i) < this.grid.size())
-                        && ((cellLivingY + j) >= 0 && (cellLivingY + j) < this.grid.get(cellLivingX + i).size())
-                        && !this.grid.get(cellLivingX + i).get(cellLivingY + j).getCellStatus().equals(CellStatus.ALIVE)) {
+                        && (i != cellLivingX || j != cellLivingY)
+                        && (0 <= (cellLivingX + i) && (cellLivingX + i) < this.grid.size())
+                        && (0 <= (cellLivingY + j) && (cellLivingY + j) < this.grid.get(cellLivingX + i).size())
+                        && !this.grid.get(cellLivingX + i).get(cellLivingY + j).getCellStatus().equals(CellStatus.ALIVE)
+                ) {
                     this.grid.get(cellLivingX + i).set(cellLivingY + j, new Cell(CellStatus.ALIVE));
                     assignedNeighbours++;
                 }

@@ -65,9 +65,7 @@ public class Board {
     private Cell getNewCellState(Cell cell, int neighbours) {
         Cell newCell = cell;
 
-        if (cell.getCellStatus().equals(CellStatus.ALIVE) && neighbours < 2) {
-            newCell = new Cell(CellStatus.DEATH);
-        } else if (cell.getCellStatus().equals(CellStatus.ALIVE) && neighbours > 3) {
+        if (cell.getCellStatus().equals(CellStatus.ALIVE) && (neighbours < 2 || 3 < neighbours)) {
             newCell = new Cell(CellStatus.DEATH);
         } else if (cell.getCellStatus().equals(CellStatus.DEATH) && neighbours == 3) {
             newCell = new Cell(CellStatus.ALIVE);
