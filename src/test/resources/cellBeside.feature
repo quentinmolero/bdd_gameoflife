@@ -1,6 +1,6 @@
-Feature: Check neighbour distance
+Feature: Check if 2 cells beside
 
-  Scenario Outline: A cell is up to 1 distance of another cell
+  Scenario Outline: A cell is not more than 1 position away on the x or y axis
     Given a grid of a horizontal and vertical length of 5
     And a cell is in coordinate 2,2
     When we check if the cell at coordinate <Cell position y>,<Cell position x> is beside the cell at coordinate 2,2
@@ -16,7 +16,7 @@ Feature: Check neighbour distance
       | 3               | 2               |
       | 3               | 3               |
 
-  Scenario Outline: A cell is more than 1 distance of another cell
+  Scenario Outline: A cell is more than 1 position away on the x or y axis
     Given a grid of a horizontal and vertical length of 5
     And a cell is in coordinate 2,2
     When we check if the cell at coordinate <Cell position y>,<Cell position x> is beside the cell at coordinate 2,2
