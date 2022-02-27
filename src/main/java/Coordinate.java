@@ -19,7 +19,7 @@ public class Coordinate {
     }
 
     public boolean isBeside(Coordinate coordinate) {
-        return Math.abs(x - coordinate.x) <= 1 && Math.abs(y - coordinate.y) <= 1;
+        return !(x == coordinate.x && y == coordinate.y) && Math.abs(x - coordinate.x) <= 1 && 1 >= Math.abs(y - coordinate.y);
     }
 
     @Override
@@ -34,5 +34,13 @@ public class Coordinate {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    @Override
+    public String toString() {
+        return "Coordinate{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

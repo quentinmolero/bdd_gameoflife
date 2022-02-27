@@ -4,17 +4,18 @@ Feature: Check if 2 cells beside
     Given a grid of a horizontal and vertical length of 5
     And a cell is in coordinate 2,2
     When we check if the cell at coordinate <Cell position y>,<Cell position x> is beside the cell at coordinate 2,2
-    Then the cells should be beside each other
+    Then the cells should <be beside> each other
     Examples:
-      | Cell position y | Cell position x |
-      | 1               | 1               |
-      | 1               | 2               |
-      | 1               | 3               |
-      | 2               | 1               |
-      | 2               | 3               |
-      | 3               | 1               |
-      | 3               | 2               |
-      | 3               | 3               |
+      | Cell position y | Cell position x | be beside      |
+      | 1               | 1               | "be beside"    |
+      | 1               | 2               | "be beside"    |
+      | 1               | 3               | "be beside"    |
+      | 2               | 1               | "be beside"    |
+      | 2               | 3               | "be beside"    |
+      | 3               | 1               | "be beside"    |
+      | 3               | 2               | "be beside"    |
+      | 3               | 3               | "be beside"    |
+      | 2               | 2               | "not be beside"|
 
   Scenario Outline: A cell is more than 1 position away on the x or y axis
     Given a grid of a horizontal and vertical length of 5
