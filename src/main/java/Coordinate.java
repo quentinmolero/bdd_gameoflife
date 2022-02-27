@@ -18,6 +18,10 @@ public class Coordinate {
         return y;
     }
 
+    public boolean isBeside(Coordinate coordinate) {
+        return Math.abs(x - coordinate.x) <= 1 && Math.abs(y - coordinate.y) <= 1;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
