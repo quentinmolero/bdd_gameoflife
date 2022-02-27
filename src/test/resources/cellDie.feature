@@ -5,7 +5,6 @@ Feature: A living cell die
     And the cell had <number> living neighbours
     When the next generation is computed
     Then the cell should die
-
     Examples:
       | number |
       | 0      |

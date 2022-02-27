@@ -45,8 +45,8 @@ public class Board {
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 Coordinate coordinateCandidate = new Coordinate(coordinate.getY() + i, coordinate.getX() + j);
-                this.areSideBySide(coordinate, coordinateCandidate);
-                if (this.areSideBySide(coordinate, coordinateCandidate) &&
+                this.areBeside(coordinate, coordinateCandidate);
+                if (this.areBeside(coordinate, coordinateCandidate) &&
                         this.grid.get(coordinateCandidate.getY()).get(coordinateCandidate.getX()).getCellStatus().equals(CellStatus.ALIVE)) {
                     neighbours.add(new Coordinate(coordinate.getY() + i,coordinate.getX() + j));
                 }
@@ -56,7 +56,7 @@ public class Board {
         return neighbours;
     }
 
-    private boolean areSideBySide(Coordinate coordinateA, Coordinate coordinateB) {
+    private boolean areBeside(Coordinate coordinateA, Coordinate coordinateB) {
         return !coordinateA.equals(coordinateB) &&
                 0 <= coordinateB.getY() && coordinateB.getY() < this.grid.size() &&
                 0 <= coordinateB.getX() && coordinateB.getX() < this.grid.get(coordinateB.getY()).size();
